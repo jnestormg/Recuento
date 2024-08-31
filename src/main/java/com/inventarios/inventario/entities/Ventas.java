@@ -14,9 +14,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class Ventas {
 
     @Id
@@ -30,5 +28,39 @@ public class Ventas {
     @ManyToOne
     @JoinColumn(name = "id_producto")
     private Productos productos;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getFecha_salida() {
+        return fecha_salida;
+    }
+
+    public void setFecha_salida(LocalDate fecha_salida) {
+        this.fecha_salida = fecha_salida;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Productos getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Productos productos) {
+        this.productos = productos;
+    }
+
+    
     
 }
