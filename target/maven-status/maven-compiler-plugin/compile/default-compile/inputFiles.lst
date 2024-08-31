@@ -1,0 +1,16 @@
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\controllers\ComprasController.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\controllers\indexController.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\controllers\VentasController.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\entities\Compras.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\entities\Productos.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\entities\Ventas.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\InventarioApplication.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\repositories\ComprasRepository.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\repositories\ProductosRepository.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\repositories\VentasRepository.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\services\ComprasService.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\services\IComprasService.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\services\IProductoService.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\services\IVentasService.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\services\ProductosService.java
+C:\Users\nmene\Desktop\Inventarios\inventario\src\main\java\com\inventarios\inventario\services\VentasService.java

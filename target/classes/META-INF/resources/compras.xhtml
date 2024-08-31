@@ -1,0 +1,169 @@
+<ui:composition xmlns:f="http://xmlns.jcp.org/jsf/core"
+ xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/template/template.xhtml">
+
+    <ui:define name="contenido">
+        <style>
+            .entrada{
+                width: 90%;
+            }
+                     
+        </style>
+        <div class="contenido-compras">
+
+            <h:form id="form">
+                <p:growl id="mensajes" showDetail="false" />
+
+                <p:commandButton value="Nueva Compra" update="form form:mensajes form-datos form:tbproductos"
+                    actionListener="#{comprasController.nuevo}" icon="pi pi-plus"
+                    rendered="#{comprasController.listaCompras!=null}" style="position: absolute; right: 50px; top: 100px;" />
+
+                 <!--tabla-->
+
+
+                <p:dataTable var="compras" value="#{comprasController.listaCompras}" id="tbproductos"
+                    reflow="true" rendered="#{comprasController.listaCompras!=null}"
+                    resizeMode="expand" resizableColumns="true" touchtable="true" paginator="true"
+                    paginatorPosition="bottom" rows="7" emptyMessage="No existen registros" widgetVar="producto"
+                    filteredValue="#{comprasController.listaComprasBusqueda}">
+
+                    <f:facet name="header">
+                        <h3>Compras</h3>
+                        <p:inputText placeholder="Buscar" id="globalFilter" onkeyup="PF('producto').filter()" />
+                    </f:facet>
+
+                    <p:column headerText="Nombre" sortBy="#{compras.productos.nombre}" filterBy="#{compras.productos.nombre}">
+                        <f:facet name="header">
+                            <h:outputText value="Nombre" />
+                        </f:facet>
+                        <h:outputText value="#{compras.productos.nombre}" />
+                    </p:column>
+                    <p:column headerText="Precio" sortBy="#{compras.productos.precio}" filterBy="#{compras.productos.precio}">
+                        <h:outputText value="#{compras.productos.precio}">
+                            <f:convertNumber type="currency" currencySinmbol="$" />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Cantidad" sortBy="#{compras.cantidad}" filterBy="#{compras.cantidad}">
+                        <h:outputText value="#{compras.cantidad}" />
+                    </p:column>
+                    
+                    <p:column headerText="Descripción" sortBy="#{compras.productos.descripcion}"
+                        filterBy="#{compras.productos.descripcion}">
+                        <h:outputText value="#{compras.productos.descripcion}" />
+                    </p:column>
+
+                    <p:column headerText="Fecha" sortBy="#{compras.fecha_ingreso}" filterBy="#{compras.fecha_ingreso}">
+                        <h:outputText value="#{compras.fecha_ingreso}" />
+                    </p:column>
+                    <p:column headerText="Opciones" style="text-align: center;">
+                        <div style="display: flex; gap: 20px; justify-content: center;">
+                        <p:commandLink update="form form-datos"
+                        actionListener="#{comprasController.actualizarCompra(compras)}" >
+                            <i class="pi pi-pencil" title="Modificar Compra" />
+                        </p:commandLink>
+
+                        <p:commandLink update="form form-datos"
+                        actionListener="#{comprasController.eliminarCompra(compras)}">
+                            <i class="pi pi-trash" title="Eliminar Compra" />
+                        </p:commandLink>
+                    </div>
+                    </p:column>
+
+                    <f:facet name="footer">
+
+
+                    </f:facet>
+
+                </p:dataTable>
+
+
+            </h:form>
+
+            <!--formulario-->
+
+            <h:form id="form-datos">
+                <p:panelGrid columns="4" layout="grid" id="campos"
+                 rendered="#{comprasController.productoSeleccionado != null}">
+
+                 <f:facet name="header">
+                    <p:outputLabel value="Registrar compra" style="font-size: 26px;"/>
+                 </f:facet>
+
+                 <p:outputLabel value="Buscar producto:" 
+                 rendered="#{comprasController.productoSeleccionado.nombre ==null}"
+                 />
+                 <p:autoComplete value="#{comprasController.nombreProducto}"
+                 placeholder="Buscar nombre..."
+                 rendered="#{comprasController.productoSeleccionado.nombre ==null}"
+                  completeMethod="#{comprasController.nombresProductos()}" 
+                  scrollHeight="250" var="item"
+                  style="width: 90% !important; "
+                  itemLabel="#{item}" itemValue="#{item}">
+                  <p:ajax event="itemSelect" update="form-datos form:mensajes" 
+                  listener="#{comprasController.setNombres(comprasController.nombreProducto)}" />
+                  </p:autoComplete>
+
+                    <p:outputLabel value="Nombre *" />
+                    <p:inputText id="nombre"   class="entrada"
+                    placeholder="Nombre del producto..." required="true"
+                    value="#{comprasController.productoSeleccionado.nombre}" />
+
+                    <p:outputLabel value="Precio *" />
+                    <p:inputText id="precio" type="number" 
+                    value="#{comprasController.productoSeleccionado.precio}" 
+                    placeholder="Precio..." required="true"
+                    min="1" step="0.5"/>
+
+                    <p:outputLabel value="Cantidad *" />
+                    <p:inputText id="cantidad" type="number"  class="entrada"
+                     value="#{comprasController.compra.cantidad}"
+                     min="1" step="1" required="true"
+                     placeholder="#{comprasController.compra.productos.cantidad} Piezas existentes" />
+
+                    <p:outputLabel for="fecha:" value="Fecha de compra " />
+                    <p:datePicker id="fecha"  required="true"
+                    class="entrada" showIcon="true" 
+                    placeholder="Fecha de ingreso..."
+                    value="#{comprasController.compra.fecha_ingreso}" showOnFocus="false"
+                    locale="es" pattern="dd/MM/yyyy" />
+
+                    <p:outputLabel value="Descripción " />
+                    <p:inputTextarea  id="descripcion" 
+                    placeholder="Descripción del producto..."
+                     class="entrada" autoResize="false" 
+                     value="#{comprasController.productoSeleccionado.descripcion}" />
+
+                    <p:spacer 
+                    rendered="#{comprasController.productoSeleccionado.nombre ==null}"
+                    />
+                    <p:spacer
+                    rendered="#{comprasController.productoSeleccionado.nombre ==null}"
+                    />
+                    <p:commandButton value="Cancelar compra" 
+                    update="form form-datos"
+                    styleClass="ui-button-danger"
+                     actionListener="#{comprasController.cancelar}"
+                     icon="pi pi-undo" immediate="true"
+                     style="float: right;"
+                     rendered="#{comprasController.productoSeleccionado!=null}"/>
+
+                    <p:commandButton value="Guardar"
+                     update="form form-datos form:mensajes"
+                     icon="pi pi-check" iconPos="right"
+                      actionListener="#{comprasController.guardar}"
+                      styleClass="ui-button-raised ui-button-success" />
+                    
+                </p:panelGrid>
+
+
+
+            </h:form>
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>

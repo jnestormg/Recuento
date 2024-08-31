@@ -1,0 +1,16 @@
+com\inventarios\inventario\services\ComprasService.class
+com\inventarios\inventario\entities\Productos.class
+com\inventarios\inventario\services\IProductoService.class
+com\inventarios\inventario\controllers\ComprasController.class
+com\inventarios\inventario\repositories\ComprasRepository.class
+com\inventarios\inventario\entities\Compras.class
+com\inventarios\inventario\InventarioApplication.class
+com\inventarios\inventario\services\ProductosService.class
+com\inventarios\inventario\controllers\VentasController.class
+com\inventarios\inventario\services\IVentasService.class
+com\inventarios\inventario\services\IComprasService.class
+com\inventarios\inventario\repositories\ProductosRepository.class
+com\inventarios\inventario\services\VentasService.class
+com\inventarios\inventario\entities\Ventas.class
+com\inventarios\inventario\controllers\indexController.class
+com\inventarios\inventario\repositories\VentasRepository.class
