@@ -71,7 +71,7 @@ public class VentasController {
    */
   public void guardar() {
     // guarda un nuevo producto
-    logger.info("prodcucto a guardar" + this.productoSeleccionado);
+    logger.info("producto a guardar" + this.productoSeleccionado);
     if (this.productoSeleccionado.getId() == null) {
       /*
        * this.productoSeleccionado.setCantidad(this.venta.getCantidad());
