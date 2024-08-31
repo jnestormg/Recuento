@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>Sistema de Inventarios</title>
+   <h:outputStylesheet library="css" name="style.css" />
+   
+</h:head>
+<h:body>
+    <header class="cabecera">
+        <!--    <ui:include src="menu.xhtml"></ui:include>
+-->
+        <p:menubar hideDelay="2000">
+            <p:menuitem value="Inventario" url="/index.xhtml" style="font-size: 26px;" />
+            <p:menuitem value="Compras" url="/compras.xhtml" style="font-size: 26px;" />
+            <p:menuitem value="Ventas" url="/ventas.xhtml" style="font-size: 26px;" />
+        </p:menubar>
+    </header>
+
+    <ui:insert name="contenido">
+
+    </ui:insert>
+
+</h:body>
+
+</html>

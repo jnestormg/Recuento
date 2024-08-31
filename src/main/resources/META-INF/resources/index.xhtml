@@ -1,0 +1,122 @@
+<ui:composition xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/template.xhtml">
+
+  <ui:define name="contenido">
+    <style>
+      .container-inventario {
+        display: flex;
+        justify-content: center !important;
+        justify-items: center !important;
+        width: 100%;
+      }
+
+      .tbproductos-inventario {
+        border-radius: 10px;
+      }
+      .red{
+        color: red;
+        border:2px solid rgb(128, 22, 3);
+        border-radius: 50%;
+        box-shadow: 0px 6px 8px rgba(255, 255, 255, 0.2);
+      }
+      .red:hover{
+        color: brown;
+        box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.4), 0px -3px 8px rgba(255, 255, 255, 0.4);
+
+      }
+      .verde{
+        color:rgb(27, 255, 27);
+        border:2px solid green;
+        border-radius: 50%;
+        box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+      }
+      .verde:hover{
+        color: darkgreen;
+        box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.4), 0px -3px 8px rgba(255, 255, 255, 0.4);
+
+      }
+    </style>
+
+    <div class="container-inventario">
+
+      <h:form id="form-inventario">
+        <p:growl id="mensaje" showDetail="true" />
+
+
+        <p:dialog header="Productos más vendidos" 
+        modal="true" widgetVar="dialog" minHeight="40" 
+        width="450" showEffect="clip" hideEffect="clip"
+         closeOnEscape="true" >
+          <div style="width: 100%; display: flex; justify-content: center;">
+            <p:pieChart model="#{indexController.pieChartModel}" style="width: 350px;" />
+           </div>
+        </p:dialog>
+        
+        <p:commandButton value="Más vendidos" type="button" 
+        title="Muestra los primeros cinco más vendidos"
+        icon="pi pi-chart-pie" onclick="PF('dialog').show()" 
+        style="position: absolute; right: 50px; top: 100px;"/>
+
+        <p:dataTable var="productos" value="#{indexController.listaProductos}"
+          id="tbproductos-inventario" reflow="true"
+          resizeMode="expand" resizableColumns="true" touchtable="true" paginator="true" paginatorPosition="bottom"
+          rows="7" emptyMessage="No existen registros. Agregue productos en compras" widgetVar="producto"
+          filteredValue="#{indexController.listaProductosBusqueda}" styleClass="tabla-inventarios">
+
+          <f:facet name="header">
+            <h3>Productos existentes</h3>
+            <p:inputText placeholder="Buscar" id="globalFilter" onkeyup="PF('producto').filter()" />
+          </f:facet>
+
+          <p:column headerText="Nombre" sortBy="#{productos.nombre}" filterBy="#{productos.nombre}">
+            <f:facet name="header">
+              <h:outputText value="Nombre" />
+            </f:facet>
+            <h:outputText value="#{productos.nombre}" />
+          </p:column>
+          <p:column headerText="Precio" sortBy="#{productos.precio}" filterBy="#{productos.precio}">
+            <h:outputText value="#{productos.precio}">
+              <f:convertNumber type="currency" currencySinmbol="$" />
+            </h:outputText>
+          </p:column>
+
+          <p:column headerText="Cantidad" sortBy="#{productos.cantidad}" filterBy="#{productos.cantidad}">
+            <h:outputText value="#{productos.cantidad}" />
+          </p:column>
+
+          <p:column headerText="Descripción" sortBy="#{productos.descripcion}" filterBy="#{productos.descripcion}">
+            <h:outputText value="#{productos.descripcion}" />
+          </p:column>
+
+          <p:column headerText="Estado" style="text-align: center;">
+            <p:outputLabel  >
+              <i class="pi pi-circle-fill #{productos.cantidad==0?'red':'verde'}"
+              title="#{productos.cantidad==0?'No hay existencia':'Hay existencia '}" />
+            </p:outputLabel>
+          </p:column>
+
+          <p:column headerText="Opciones" style="text-align: center;">
+            <div style="display: flex; gap: 20px; justify-content: center;">
+           
+
+              <p:commandLink update="form-inventario" 
+              actionListener="#{indexController.eliminarProducto(productos)}">
+                <i class="pi pi-trash" title="Eliminar producto" />
+              </p:commandLink>
+            </div>
+          </p:column>
+
+          <f:facet name="footer">
+
+
+          </f:facet>
+
+        </p:dataTable>
+
+      </h:form>
+
+      
+
+    </div>
+  </ui:define>
+</ui:composition>
