@@ -5,7 +5,7 @@ FROM openjdk:17-jdk
 COPY target/inventario-0.0.1-SNAPSHOT.jar /app.jar
 
 # Expon el puerto en el que la aplicación escuchará
-EXPOSE 8080
+EXPOSE 8081
 
 # Define el comando para ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "/app.jar"]
