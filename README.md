@@ -8,3 +8,9 @@
 
 ![Static Badge](https://img.shields.io/badge/Spring%20Boot-blue)
 ![Static Badge](https://img.shields.io/badge/Primefaces-blue)
+![Static Badge](https://img.shields.io/badge/Java-blue)
+![Static Badge](https://img.shields.io/badge/Mysql-blue)
+![Static Badge](https://img.shields.io/badge/JPA-blue)
+
+
+
