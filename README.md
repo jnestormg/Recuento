@@ -11,6 +11,12 @@
 ![Static Badge](https://img.shields.io/badge/Java-blue)
 ![Static Badge](https://img.shields.io/badge/Mysql-blue)
 ![Static Badge](https://img.shields.io/badge/JPA-blue)
+![Static Badge](https://img.shields.io/badge/JoinFaces-blue)
+![Static Badge](https://img.shields.io/badge/Html-blue)
+![Static Badge](https://img.shields.io/badge/Css-blue)
+
+
+
 
 
 
