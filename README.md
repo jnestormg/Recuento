@@ -15,6 +15,8 @@
 ![Static Badge](https://img.shields.io/badge/Html-blue)
 ![Static Badge](https://img.shields.io/badge/Css-blue)
 
+<p>Permite administrar las compras y las ventas de los productos, además de alertar sobre su existencia y graficar los productos más vendidos.</p>
+
 
 
 
