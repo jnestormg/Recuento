@@ -3,7 +3,7 @@
 
 
 <h1>Sistema de Invetarios</h1>
-<img src="https://portafolio-nine-tawny.vercel.app/img/inventarios.png" width=50%/>
+<img src="https://portafolio-nine-tawny.vercel.app/img/inventarios.png" width=70%/>
 
 
 ![Static Badge](https://img.shields.io/badge/Spring%20Boot-blue)
