@@ -1,1 +1,1 @@
-https://img.shields.io/badge/springBoot-green
+![Static Badge](https://img.shields.io/badge/springBoot-green)
